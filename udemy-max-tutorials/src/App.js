@@ -21,11 +21,23 @@ class App extends Component {
   };
 
   render() {
+    // inline styling it's scoped to component
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+      // hover is kinda difficult to implement
+    };
+
     return (
       <div className="App">
         <h1>Hi, I'm react app</h1>
         <p>this is really working</p>
-        <button onClick={() => this.switchNameHandler('Paulianus!!!')}>Switch Name</button>
+        <button style={style} onClick={() => this.switchNameHandler('Paulianus!!!')}>
+          Switch Name
+        </button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
 
         {this.switchNameHandler}
