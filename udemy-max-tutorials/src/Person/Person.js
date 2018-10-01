@@ -1,9 +1,10 @@
 import React from 'react';
+import './Person.css';
 
 // functional component example with ES6 best practice
 const person = props => {
   return (
-    <div>
+    <div className="Person">
       <p onClick={props.click}>
         I'm a {props.name} and i am {props.age} years old
       </p>
