@@ -38,17 +38,8 @@ class App extends Component {
   };
 
   render() {
-    // inline styling jsx it's scoped to component
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -66,7 +57,7 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
+      btnClass = classes.Red;
     }
 
     // adding classes dynamically to the component
@@ -82,7 +73,7 @@ class App extends Component {
       <div className={classes.App}>
         <h1>Hi, I'm react app</h1>
         <p className={assignedClasses.join(' ')}>this is really working</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
