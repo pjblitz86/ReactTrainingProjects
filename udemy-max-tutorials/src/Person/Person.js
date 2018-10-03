@@ -1,5 +1,6 @@
 import React from 'react';
 import './Person.css';
+import Radium from 'radium';
 
 // functional component example with ES6 best practice
 const person = props => {
@@ -14,4 +15,4 @@ const person = props => {
   );
 };
 
-export default person;
+export default Radium(person);
