@@ -38,14 +38,15 @@ class App extends Component {
   };
 
   render() {
-    // inline styling it's scoped to component
+    // inline styling jsx it's scoped to component
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
-      // hover is kinda difficult to implement
+      // pseudo selectors is kinda difficult to implement, e.g. hover
     };
 
     let persons = null;
@@ -66,6 +67,7 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = 'red';
     }
 
     return (
