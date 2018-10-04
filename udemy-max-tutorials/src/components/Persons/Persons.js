@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+// PureComponent has in built shouldComponentUpdate lifecycle
 import Person from './Person/Person';
 
-class Persons extends Component {
+class Persons extends PureComponent {
   constructor(props) {
     super(props); // must be called
     console.log('[Persons.js] Inside Constructor', props);
@@ -22,11 +23,12 @@ class Persons extends Component {
     console.log('[UPDATE Persons.js] Inside componentWillReceiveProps', nextProps);
   }
 
-  // for performance
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('[UPDATE Persons.js] Inside shouldComponentUpdate', nextProps, nextState);
-    return nextProps.Persons !== this.props.persons; // will stop component updating if false -  nothing changed; it will save performance
-  }
+  // // for performance
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[UPDATE Persons.js] Inside shouldComponentUpdate', nextProps, nextState);
+  //   return nextProps.Persons !== this.props.persons; // will stop component updating if false -  nothing changed; it will save performance
+  //   // return true;
+  // }
 
   componentWillUpdate(nextProps, nextState) {
     console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState);
