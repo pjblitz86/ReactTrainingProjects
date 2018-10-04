@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Cokcpit.css';
+import Hoc from '../../hoc/Hoc';
 
 const cockpit = props => {
   // adding classes dynamically to the component
@@ -17,13 +18,15 @@ const cockpit = props => {
   }
 
   return (
-    <div className={classes.Cockpit}>
-      <h1>{props.appTitle}</h1>
-      <p className={assignedClasses.join(' ')}>this is really working</p>
-      <button className={btnClass} onClick={props.clicked}>
-        Toggle Persons
-      </button>
-    </div>
+    <Hoc>
+      <div className={classes.Cockpit}>
+        <h1>{props.appTitle}</h1>
+        <p className={assignedClasses.join(' ')}>this is really working</p>
+        <button className={btnClass} onClick={props.clicked}>
+          Toggle Persons
+        </button>
+      </div>
+    </Hoc>
   );
 };
 
