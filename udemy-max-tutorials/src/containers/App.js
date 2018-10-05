@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import Hoc from '../hoc/Hoc';
+import withClass from '../hoc/withClass'; // not a component
 
 class App extends PureComponent {
   constructor(props) {
@@ -32,11 +33,17 @@ class App extends PureComponent {
   // }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState);
+    console.log(
+      '[UPDATE App.js] Inside componentWillUpdate',
+      nextProps,
+      nextState
+    );
   }
 
   componentDidUpdate() {
-    console.log('[UPDATE App.js] Inside componentDidUpdate');
+    console.log(
+      '[UPDATE App.js] Inside componentDidUpdate'
+    );
   }
 
   nameChangeHandler = (event, id) => {
@@ -82,7 +89,7 @@ class App extends PureComponent {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      <Hoc>
         <button
           onClick={() => {
             this.setState({ showPersons: true });
@@ -97,7 +104,7 @@ class App extends PureComponent {
           persons={this.state.persons}
         />
         {persons}
-      </WithClass>
+      </Hoc>
     );
     // other way - this is what happens under the hood using JSX
     // return React.createElement(
@@ -108,4 +115,4 @@ class App extends PureComponent {
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
