@@ -42,9 +42,7 @@ class Persons extends PureComponent {
   }
 
   componentDidUpdate() {
-    console.log(
-      '[UPDATE Persons.js] Inside componentDidUpdate'
-    );
+    console.log('[UPDATE Persons.js] Inside componentDidUpdate');
   }
 
   render() {
@@ -56,9 +54,7 @@ class Persons extends PureComponent {
           name={person.name}
           position={index}
           age={person.age}
-          changed={event =>
-            this.props.changed(event, person.id)
-          }
+          changed={event => this.props.changed(event, person.id)}
           key={person.id}
         />
       );
