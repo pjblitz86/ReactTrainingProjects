@@ -20,7 +20,10 @@ class Persons extends PureComponent {
 
   // UPDATE LIFECYCLE
   componentWillReceiveProps(nextProps) {
-    console.log('[UPDATE Persons.js] Inside componentWillReceiveProps', nextProps);
+    console.log(
+      '[UPDATE Persons.js] Inside componentWillReceiveProps',
+      nextProps
+    );
   }
 
   // // for performance
@@ -31,11 +34,17 @@ class Persons extends PureComponent {
   // }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState);
+    console.log(
+      '[UPDATE Persons.js] Inside componentWillUpdate',
+      nextProps,
+      nextState
+    );
   }
 
   componentDidUpdate() {
-    console.log('[UPDATE Persons.js] Inside componentDidUpdate');
+    console.log(
+      '[UPDATE Persons.js] Inside componentDidUpdate'
+    );
   }
 
   render() {
@@ -45,8 +54,11 @@ class Persons extends PureComponent {
         <Person
           click={() => this.props.clicked(index)}
           name={person.name}
+          position={index}
           age={person.age}
-          changed={event => this.props.changed(event, person.id)}
+          changed={event =>
+            this.props.changed(event, person.id)
+          }
           key={person.id}
         />
       );
