@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // use this instead of <a> tag
 
 const Track = props => {
-  const { track } = props;
+  const { track } = props; // destructuring
   return (
     <div className="col-md-6">
       <div className="card mb-4 shadow-sm">
