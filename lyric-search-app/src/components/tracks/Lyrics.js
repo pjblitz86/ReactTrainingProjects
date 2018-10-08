@@ -48,7 +48,7 @@ class Lyrics extends Component {
             Go Back
           </Link>
           <div className="card">
-            <h5 className="car-header">
+            <h5 className="card-header">
               {track.track_name} by{' '}
               <span className="text-secondary">{track.artist_name}</span>
             </h5>
