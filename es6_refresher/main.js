@@ -72,3 +72,19 @@ const profile = {
 const { name } = profile;
 
 console.log(profile.name);
+
+// CLASSES
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  greet() {
+    return `Hello, my name is ${this.name}`;
+  }
+}
+
+const person1 = new Person('John');
+const person2 = new Person('Sara');
+
+console.log(person2.greet());
