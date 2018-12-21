@@ -2,10 +2,18 @@ import React, { Component } from "react";
 // import axios from 'axios';
 import "./Blog.css";
 import Posts from "./Posts/Posts";
-import { Route, NavLink, Switch, Redirect } from "react-router-dom";
-import NewPost from "./NewPost/NewPost";
+import { Route, NavLink, Switch } from "react-router-dom";
+import asyncComponent from "../../hoc/asyncComponent";
+// import NewPost from "./NewPost/NewPost";
+
+const AsyncNewPost = asyncComponent(() => {
+  return import("./NewPost/NewPost"); // here we decide which component will be loaded lazily
+});
 
 class Blog extends Component {
+  state = {
+    auth: true
+  };
   render() {
     return (
       <div className="Blog">
@@ -43,9 +51,13 @@ class Blog extends Component {
         {/* <Route exact path="/" render={() => <h1>Home</h1>} />
         <Route path="/" render={() => <h1>Home2</h1>} /> */}
         <Switch>
-          <Route path="/new-post" component={NewPost} />
+          {this.state.auth ? (
+            <Route path="/new-post" component={AsyncNewPost} />
+          ) : null}
           <Route path="/posts" component={Posts} />
-          <Redirect from="/" to="/posts" />
+          <Route render={() => <h1>Not found</h1>} />
+          {/* last comes catch all - error/404 route if no route was catched  */}
+          {/* <Redirect from="/" to="/posts" /> */}
           {/* <Route path="/" component={Posts} /> */}
         </Switch>
       </div>
