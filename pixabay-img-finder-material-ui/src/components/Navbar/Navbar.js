@@ -38,6 +38,7 @@ function NavBar(props) {
           </Typography>
         </Toolbar>
       </AppBar>
+      <br />
     </div>
   );
 }
