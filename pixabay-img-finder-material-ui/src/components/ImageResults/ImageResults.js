@@ -6,17 +6,37 @@ import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import { withStyles } from "@material-ui/core/styles";
-
-// ZoomIn, FlatButton
+import Button from "@material-ui/core/Button";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 import Dialog from "@material-ui/core/Dialog";
 
-const styles = () => ({
+const styles = theme => ({
   icon: {
     color: "rgba(255, 255, 255, 0.54)"
+  },
+  button: {
+    margin: theme.spacing.unit
+  },
+  img: {
+    width: "100%"
   }
 });
 
 class ImageResults extends Component {
+  state = {
+    open: false,
+    currentImg: ""
+  };
+
+  handleOpen = img => {
+    this.setState({ open: true, currentImg: img });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     let imageListContent;
     const { images, classes } = this.props;
@@ -34,7 +54,10 @@ class ImageResults extends Component {
                   </span>
                 }
                 actionIcon={
-                  <IconButton className={classes.icon}>
+                  <IconButton
+                    onClick={() => this.handleOpen(img.largeImageURL)}
+                    className={classes.icon}
+                  >
                     <InfoIcon />
                   </IconButton>
                 }
@@ -47,12 +70,32 @@ class ImageResults extends Component {
       imageListContent = null;
     }
 
-    return <div>{imageListContent}</div>;
+    return (
+      <div>
+        {imageListContent}
+        <Dialog open={this.state.open} onClose={this.handleClose}>
+          <DialogContent>
+            <img src={this.state.currentImg} alt="" className={classes.img} />
+          </DialogContent>
+          <DialogActions>
+            <Button
+              className={classes.button}
+              variant="outlined"
+              color="primary"
+              onClick={this.handleClose}
+            >
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
   }
 }
 
 ImageResults.propTypes = {
-  images: PropTypes.array.isRequired
+  images: PropTypes.array.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ImageResults);
