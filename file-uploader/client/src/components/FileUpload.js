@@ -3,12 +3,12 @@ import axios from "axios";
 
 const FileUpload = () => {
   const [file, setFile] = useState("");
-  const [filename, setFilename] = useState("Choose File");
-  const [uploadedfile, setUploadedFile] = useState({});
+  const [fileName, setFileName] = useState("Choose File");
+  const [uploadedFile, setUploadedFile] = useState({});
 
   const onChange = e => {
     setFile(e.target.files[0]);
-    setFilename(e.target.files[0].name);
+    setFileName(e.target.files[0].name);
   };
 
   const onSubmit = async e => {
@@ -44,7 +44,7 @@ const FileUpload = () => {
             onChange={onChange}
           />
           <label className="custom-file-label" htmlFor="customFile">
-            {filename}
+            {fileName}
           </label>
         </div>
         <input
@@ -53,6 +53,14 @@ const FileUpload = () => {
           className="btn btn-primary btn-block mt-4"
         />
       </form>
+      {uploadedFile ? (
+        <div className="row mt-5">
+          <div className="col-md-9 m-auto">
+            <h3 className="text-center">{uploadedFile.fileName}</h3>
+            <img style={{ width: "100%" }} src={uploadedFile.filePath} alt="" />
+          </div>
+        </div>
+      ) : null}
     </Fragment>
   );
 };
